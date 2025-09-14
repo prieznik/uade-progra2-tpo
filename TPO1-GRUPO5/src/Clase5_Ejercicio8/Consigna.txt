@@ -1,0 +1,13 @@
+Clase 5 Ejercicio 8
+Extienda el ejercicio anterior para que sea posible cargar varios diccionarios simples (map)
+y luego consolidarlos en un único diccionario múltiple sólo que en este caso se utilizan
+estructuras dinámicas. El programa tiene un menú constante que da al usuario las opciones:
+- Cargar un mapeo con notas de una materia
+- Mostrar el último mapeo cargado
+- Agregar el último mapeo cargado al Diccionario general
+- Agregar una nota para un DNI específico
+- Quitar una nota para un DNI específico
+- Quitar un alumno
+- Mostrar las notas de un alumno
+- Mostrar todos los alumnos
+- Mostrar todos los alumnos y su promedio de notas

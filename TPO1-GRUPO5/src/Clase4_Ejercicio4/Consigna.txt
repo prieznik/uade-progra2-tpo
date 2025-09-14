@@ -1,0 +1,7 @@
+Clase 4 Ejercicio 4
+Implemente un método que reciba dos pilas de colas de enteros P1 y P2,
+y retorne una nueva pila de colas Pout que sea la unión de los elementos de P1 y P2.
+Cabe aclarar que los elementos de P1 y P2 están ordenados de menor a mayor en función
+de su tamaño, y que la pila Pout debe quedar ordenada del mismo modo. En el tope de las
+pilas se encuentra el elemento de mayor tamaño. Resuelva el problema planteando exclusivamente
+en términos de las operaciones de los TDA Pila y TDA Cola.
