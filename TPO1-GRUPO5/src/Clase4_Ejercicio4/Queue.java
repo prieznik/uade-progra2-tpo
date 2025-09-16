@@ -1,4 +1,4 @@
-package queue;
+package Clase4_Ejercicio4;
 
 public interface Queue<T> {
 	 //Inserta el elemento e en el final (rear/tail) de la cola

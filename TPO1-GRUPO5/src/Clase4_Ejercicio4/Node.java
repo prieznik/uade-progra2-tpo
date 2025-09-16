@@ -1,4 +1,4 @@
-package Clase3_Ejercicio7;
+package Clase4_Ejercicio4;
 
 public class Node<E> {
     private E element;
