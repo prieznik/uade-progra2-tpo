@@ -11,4 +11,3 @@ estructuras dinámicas. El programa tiene un menú constante que da al usuario l
 - Mostrar las notas de un alumno
 - Mostrar todos los alumnos
 - Mostrar todos los alumnos y su promedio de notas
--
