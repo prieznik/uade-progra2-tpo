@@ -1,6 +1,5 @@
 
 package TDAs.Stack;
-import List.MyException;
 
 public interface Stack<E> {
 	public void push(E item);

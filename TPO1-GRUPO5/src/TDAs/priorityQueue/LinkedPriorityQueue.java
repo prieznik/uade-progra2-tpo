@@ -1,7 +1,5 @@
 package TDAs.priorityQueue;
 
-import queue.MyException;
-import queue.Node;
 //Implementación dinámica - Estructura de nodos enlazada
 //Opción con insert Ordenado (min y remove min encuentran la máxima prioridad en el primer elemento)
 //Las prioridades más pequeñas se consideran más "urgentes"
