@@ -1,4 +1,5 @@
 package Clase3_Ejercicio7;
+import TDAs.Stack.LinkedStack;
 
 public class Validador {
 

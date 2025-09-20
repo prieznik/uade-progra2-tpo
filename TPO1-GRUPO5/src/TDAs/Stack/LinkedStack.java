@@ -1,6 +1,4 @@
 package TDAs.Stack;
-import List.Node;
-import List.MyException;
 
 public class LinkedStack<E> implements Stack<E>{
 	private Node<E> top;

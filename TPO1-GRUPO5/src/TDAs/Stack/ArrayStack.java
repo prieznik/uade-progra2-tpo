@@ -1,5 +1,4 @@
 package TDAs.Stack;
-import List.MyException;
 
 public class ArrayStack<E> implements Stack<E> {
 	private E[] array;
