@@ -3,5 +3,46 @@ package Clase5_Ejercicio8;
 public class Main {
     public static void main(String[] args) {
 
+        /*
+            Ejercicio 7:
+
+            Se poseen dos diccionarios simples (mapeos) M1 y M2 cuyas entradas tienen por
+            clave un número de dni, y por imagen la nota de una materia (0 a 10) (M1 tiene las
+            notas de una materia A y M2 de una materia B).
+
+            • Implementar un programa que permita al usuario cargar DNI y nota
+            completando ambos mapeos y luego visualizar todos los datos cargados.
+            Utilizar estructuras estáticas.
+            • Realice un comando llamado unir que reciba los dos mapeos M1 y M2 y
+            devuelva una lista L con TODOS aquellos elementos E1 de M1 y E2 de M2
+            que coincidan en la clave, pero tengan un valor diferente.
+
+            Por ejemplo, si
+            E1= (DNI: 29303, Nota: 8) pertenece a M1 y
+            E2= (DNI: 29303, Nota: 7) pertenece a M2,
+            entonces E1 y E2 serán puestos en L.
+
+         */
+
+        /*
+            Ejercicio 8:
+
+            Extienda el ejercicio anterior para que sea posible cargar varios diccionarios simples (map)
+            y luego consolidarlos en un único diccionario múltiple sólo que en este caso se utilizan
+            estructuras dinámicas.
+
+            El programa tiene un menú constante que da al usuario las opciones:
+            - Cargar un mapeo con notas de una materia
+            - Mostrar el último mapeo cargado
+            - Agregar el último mapeo cargado al Diccionario general
+            - Agregar una nota para un DNI específico
+            - Quitar una nota para un DNI específico
+            - Quitar un alumno
+            - Mostrar las notas de un alumno
+            - Mostrar todos los alumnos
+            - Mostrar todos los alumnos y su promedio de notas
+
+         */
+
     }
 }
