@@ -1,4 +1,4 @@
-package Clase5_Ejercicio8;
+package Clase5_Ejercicio7;
 
 import TDAs.List.LinkedList;
 import TDAs.Map.Entrada;

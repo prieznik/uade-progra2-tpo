@@ -1,75 +1,35 @@
         /*
-            Ejercicio 7:
+            Ejercicio 8:
 
-            Se poseen dos diccionarios simples (mapeos) M1 y M2 cuyas entradas tienen por
-            clave un número de dni, y por value la nota de una materia (0 a 10) (M1 tiene las
-            notas de una materia A y M2 de una materia B).
+            Extienda el ejercicio anterior para que sea posible cargar varios diccionarios simples (map)
+            y luego consolidarlos en un único diccionario múltiple sólo que en este caso se utilizan
+            estructuras dinámicas.
 
-            • Implementar un programa que permita al usuario cargar DNI y nota
-            completando ambos mapeos y luego visualizar todos los datos cargados.
+            El programa tiene un menú constante que da al usuario las opciones:
+            - Cargar un mapeo con notas de una materia
+            - Mostrar el último mapeo cargado
+            - Agregar el último mapeo cargado al Diccionario general
+            - Agregar una nota para un DNI específico
+            - Quitar una nota para un DNI específico
+            - Quitar un alumno
+            - Mostrar las notas de un alumno
+            - Mostrar todos los alumnos
+            - Mostrar todos los alumnos y su promedio de notas
 
-                Necesitamos clase materia con:
-                    nombre: "matematica",
-                    diccionario: {
+
+
+            ej diccionario multiple:
+
+            dm = {
+                    materia1: {
                         29303: 8,
                         11111: 10
                     },
-                    ingresarNota(dni,nota),
-                    imprimirDiccionario(),
+                    materia2: {
+                        29303: 7,
+                        11111: 10,
+                    }
+               }
 
-
-                // ingresarNota(dni,nota):
-                1) Scanner que solicite al usuario ingresar una numero dni.
-                2) Scanner que solicite al usuario ingresar una nota.
-                3) Agregar key (dni) value (nota) al diccionario.
-
-                // imprimirDiccionario():
-                  Para cada elemento del diciconario imprimir key-value (entries).
-
-
-            Utilizar estructuras estáticas.
-            • Realice un comando llamado unir que reciba los dos mapeos M1 y M2 y
-            devuelva una lista L con TODOS aquellos elementos E1 de M1 y E2 de M2
-            que coincidan en la clave, pero tengan un valor diferente.
-
-            Caso 1: Necesitamos clase unionDiccionarios con:
-                listaUnificada: [],
-                unirDos(dic1, dic2),
-                imprimirListaUnificada()
-
-                // unirDos(dic1,dic1):
-                Esto recibiria obligatoriamente dos diccionarios.
-
-
-            Por ejemplo, si
-            E1= (DNI: 29303, Nota: 8) pertenece a M1 y
-            E2= (DNI: 29303, Nota: 7) pertenece a M2,
-            entonces E1 y E2 serán puestos en L.
-
-            M1 = {
-                29303: 8,
-                11111: 10
-            }
-
-            M2 = {
-                29303: 7,
-                11111: 10,
-            }
-
-            L = ???
 
          */
-
-Clase 5 Ejercicio 8
-Extienda el ejercicio anterior para que sea posible cargar varios diccionarios simples (map)
-y luego consolidarlos en un único diccionario múltiple sólo que en este caso se utilizan
-estructuras dinámicas. El programa tiene un menú constante que da al usuario las opciones:
-- Cargar un mapeo con notas de una materia
-- Mostrar el último mapeo cargado
-- Agregar el último mapeo cargado al Diccionario general
-- Agregar una nota para un DNI específico
-- Quitar una nota para un DNI específico
-- Quitar un alumno
-- Mostrar las notas de un alumno
-- Mostrar todos los alumnos
-- Mostrar todos los alumnos y su promedio de notas
