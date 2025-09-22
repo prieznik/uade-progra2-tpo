@@ -1,69 +1,63 @@
 package Clase5_Ejercicio8;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-        /*
-            Ejercicio 7:
+        // Crear materia Matemática
+        System.out.print("Ingrese el nombre de la primera materia: ");
+        String nombreMateria1 = scanner.nextLine();
+        Materia materia1 = new Materia(nombreMateria1);
 
-            Se poseen dos diccionarios simples (mapeos) M1 y M2 cuyas entradas tienen por
-            clave un número de dni, y por imagen la nota de una materia (0 a 10) (M1 tiene las
-            notas de una materia A y M2 de una materia B).
+        // Ingresar notas para Matemática
+        System.out.println("\n--- Ingresando notas para " + nombreMateria1 + " ---");
+        System.out.print("¿Cuántas notas desea ingresar? ");
+        int cantidadNotas1 = scanner.nextInt();
 
-            • Implementar un programa que permita al usuario cargar DNI y nota
-            completando ambos mapeos y luego visualizar todos los datos cargados.
+        for (int i = 0; i < cantidadNotas1; i++) {
+            System.out.print("Ingrese DNI del alumno " + (i+1) + ": ");
+            int dni = scanner.nextInt();
+            System.out.print("Ingrese nota: ");
+            int nota = scanner.nextInt();
+            materia1.ingresarNota(dni, nota);
+        }
 
-                Necesitamos clase materia con:
-                    nombre: "matematica",
-                    diccionario: {
-                        29303: 8,
-                        11111: 10
-                    },
-                    ingresarNota(dni,nota),
-                    imprimirDiccionario(),
+        // Crear materia 2
+        scanner.nextLine(); // Limpiar buffer
+        System.out.print("\nIngrese el nombre de la segunda materia: ");
+        String nombreMateria2 = scanner.nextLine();
+        Materia materia2 = new Materia(nombreMateria2);
 
+        // Ingresar notas para Física
+        System.out.println("\n--- Ingresando notas para " + nombreMateria2 + " ---");
+        System.out.print("¿Cuántas notas desea ingresar? ");
+        int cantidadNotas2 = scanner.nextInt();
 
-                // ingresarNota(dni,nota):
-                1) Scanner que solicite al usuario ingresar una numero dni.
-                2) Scanner que solicite al usuario ingresar una nota.
-                3) Agregar key (dni) value (nota) al diccionario.
+        for (int i = 0; i < cantidadNotas2; i++) {
+            System.out.print("Ingrese DNI del alumno " + (i+1) + ": ");
+            int dni = scanner.nextInt();
+            System.out.print("Ingrese nota: ");
+            int nota = scanner.nextInt();
+            materia2.ingresarNota(dni, nota);
+        }
 
-                // imprimirDiccionario():
-                  Para cada elemento del diciconario imprimir key-value (entries).
+        // Mostrar diccionarios
+        System.out.println("\n=== DICCIONARIOS ===");
+        materia1.imprimirDiccionario();
+        materia2.imprimirDiccionario();
 
+        // Unir diccionarios
+        UnionDiccionarios union = new UnionDiccionarios();
+        union.unirDos(materia1, materia2);
 
-            Utilizar estructuras estáticas.
-            • Realice un comando llamado unir que reciba los dos mapeos M1 y M2 y
-            devuelva una lista L con TODOS aquellos elementos E1 de M1 y E2 de M2
-            que coincidan en la clave, pero tengan un valor diferente.
+        System.out.println("\n=== LISTA UNIFICADA ===");
+        union.imprimirListaUnificada();
 
-            Caso 1: Necesitamos clase unionDiccionarios con:
-                listaUnificada: [],
-                unirDos(dic1, dic2),
-                imprimirListaUnificada()
+        scanner.close();
 
-                // unirDos(dic1,dic1):
-                Esto recibiria obligatoriamente dos diccionarios.
+        // FIN EJ 7 (ver borrador mental en Consigna.txt).
 
-
-            Por ejemplo, si
-            E1= (DNI: 29303, Nota: 8) pertenece a M1 y
-            E2= (DNI: 29303, Nota: 7) pertenece a M2,
-            entonces E1 y E2 serán puestos en L.
-
-            M1 = {
-                29303: 8,
-                11111: 10
-            }
-
-            M2 = {
-                29303: 7,
-                11111: 10,
-            }
-
-            L = ???
-
-         */
 
         /*
             Ejercicio 8:
