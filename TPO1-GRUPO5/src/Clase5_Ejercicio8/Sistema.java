@@ -5,10 +5,12 @@ import TDAs.Map.ArrayMap;
 import TDAs.Map.Entry;
 
 public class Sistema {
+    private Scanner scanner;
     private ArrayMap<String, Materia> diccionarioGeneral;
     private LinkedList<Materia> listaMaterias;
 
     public Sistema() {
+        this.scanner = new Scanner(System.in);
         this.diccionarioGeneral = new ArrayMap<>();
         this.listaMaterias = new LinkedList<>();
     }
@@ -32,22 +34,37 @@ public class Sistema {
         System.out.print("Seleccionar una opción: ");
     }
 
-    public void crearMateria() {
-        Scanner scanner = new Scanner(System.in);
+    // Validar nota entre 0 y 10
+    private int leerNotaValida() {
+        int nota;
+        do {
+            System.out.print("Ingresar nota (0 a 10): ");
+            nota = scanner.nextInt();
+            if (nota < 0 || nota > 10) {
+                System.out.println("⚠ La nota debe estar entre 0 y 10. Intenta nuevamente.");
+            }
+        } while (nota < 0 || nota > 10);
+        return nota;
+    }
 
+    private int leerDni() {
+        System.out.print("Ingresar DNI del alumno: ");
+        return scanner.nextInt();
+    }
+
+    public void crearMateria() {
         System.out.print("Ingresar el nombre de la materia: ");
-        String nombreMateria = scanner.nextLine();
+        String nombreMateria = scanner.nextLine(); // usa nextLine para que lea espacios
+        if (nombreMateria.isEmpty()) nombreMateria = scanner.nextLine(); // fix por salto de línea
+
         Materia nuevaMateria = new Materia(nombreMateria);
 
-        System.out.println("\n--- Ingresando notas para " + nombreMateria + " ---");
         System.out.print("¿Cuántas notas deseas ingresar? ");
         int cantidadNotas = scanner.nextInt();
 
         for (int i = 0; i < cantidadNotas; i++) {
-            System.out.print("Ingresar DNI del alumno " + (i+1) + ": ");
-            int dni = scanner.nextInt();
-            System.out.print("Ingresar nota: ");
-            int nota = scanner.nextInt();
+            int dni = leerDni();
+            int nota = leerNotaValida();
             nuevaMateria.ingresarNota(dni, nota);
         }
 
@@ -63,24 +80,31 @@ public class Sistema {
 
         listaMaterias.First();
         Materia ultimaMateria = null;
-
         while (!listaMaterias.atEnd()) {
             ultimaMateria = listaMaterias.getCurrent();
             listaMaterias.advance();
         }
 
         if (ultimaMateria != null) {
-            String nombreClave = ultimaMateria.getNombre();
-            diccionarioGeneral.put(nombreClave, ultimaMateria);
-            System.out.println("Materia '" + nombreClave + "' agregada al diccionario general.");
+            diccionarioGeneral.put(ultimaMateria.getNombre(), ultimaMateria);
+            System.out.println("Materia '" + ultimaMateria.getNombre() + "' agregada al diccionario general.");
         }
     }
 
+
     private Materia buscarMateriaPorNombre(String nombreBuscado) {
         for (Entry<String, Materia> entry : diccionarioGeneral.entries()) {
-            String nombreMateria = entry.getKey();
-            if (nombreMateria.equals(nombreBuscado)) {
+            if (entry.getKey().equals(nombreBuscado)) {
                 return entry.getValue();
+            }
+        }
+        return null;
+    }
+
+    private Integer obtenerClaveExacta(ArrayMap<Integer, Integer> notas, Integer dniBuscado) {
+        for (Entry<Integer, Integer> entry : notas.entries()) {
+            if (entry.getKey().intValue() == dniBuscado.intValue()) {
+                return entry.getKey();
             }
         }
         return null;
@@ -96,16 +120,6 @@ public class Sistema {
         return null;
     }
 
-    private Integer obtenerClaveExacta(ArrayMap<Integer, Integer> notas, Integer dniBuscado) {
-        for (Entry<Integer, Integer> entry : notas.entries()) {
-            Integer dni = entry.getKey();
-            if (dni.intValue() == dniBuscado.intValue()) {
-                return dni; // devolver la referencia exacta
-            }
-        }
-        return null;
-    }
-
     private boolean eliminarNotaPorDni(ArrayMap<Integer, Integer> notas, Integer dniBuscado) {
         Integer claveExacta = obtenerClaveExacta(notas, dniBuscado);
         if (claveExacta != null) {
@@ -116,59 +130,47 @@ public class Sistema {
     }
 
     public void agregarNotaMateria() {
-        Scanner scanner = new Scanner(System.in);
-
         System.out.print("Ingresar el nombre de la materia: ");
         String nombreMateria = scanner.nextLine();
-
-        System.out.print("Ingresar el DNI del alumno: ");
-        Integer dni = scanner.nextInt();
-
-        System.out.print("Ingresar nota: ");
-        Integer nota = scanner.nextInt();
+        if (nombreMateria.isEmpty()) nombreMateria = scanner.nextLine(); // fix por salto de línea
 
         Materia materia = buscarMateriaPorNombre(nombreMateria);
-
         if (materia == null) {
             System.out.println("La materia '" + nombreMateria + "' no existe en el diccionario general.");
             return;
         }
 
-        ArrayMap<Integer, Integer> notas = materia.getNotas();
+        int dni = leerDni();
+        int nota = leerNotaValida();
 
-        // Buscar clave exacta antes de insertar
+        ArrayMap<Integer, Integer> notas = materia.getNotas();
         Integer claveExacta = obtenerClaveExacta(notas, dni);
+
         if (claveExacta != null) {
-            notas.put(claveExacta, nota); // pisa usando la referencia original
+            notas.put(claveExacta, nota);
         } else {
-            notas.put(dni, nota); // agrega nueva
+            notas.put(dni, nota);
         }
 
-        System.out.println("Nota agregada/actualizada para DNI " + dni + " en la materia '" + nombreMateria + "'.");
+        System.out.println("Nota registrada para DNI " + dni + " en la materia '" + nombreMateria + "'.");
     }
 
     public void eliminarNotaMateria() {
-        Scanner scanner = new Scanner(System.in);
-
         System.out.print("Ingresar el nombre de la materia: ");
         String nombreMateria = scanner.nextLine();
-
-        System.out.print("Ingresar el DNI del alumno: ");
-        Integer dni = scanner.nextInt();
+        if (nombreMateria.isEmpty()) nombreMateria = scanner.nextLine();
 
         Materia materia = buscarMateriaPorNombre(nombreMateria);
-
         if (materia == null) {
             System.out.println("La materia '" + nombreMateria + "' no existe en el diccionario general.");
             return;
         }
 
-        ArrayMap<Integer, Integer> notas = materia.getNotas();
-
-        if (eliminarNotaPorDni(notas, dni)) {
+        int dni = leerDni();
+        if (eliminarNotaPorDni(materia.getNotas(), dni)) {
             System.out.println("Nota eliminada para DNI " + dni + " en la materia '" + nombreMateria + "'.");
         } else {
-            System.out.println("No existe una nota para DNI " + dni + " en la materia '" + nombreMateria + "'.");
+            System.out.println("No existe una nota para ese DNI en '" + nombreMateria + "'.");
         }
     }
 
@@ -195,7 +197,7 @@ public class Sistema {
     }
 
     public void obtenerNotasAlumno() {
-        Scanner scanner = new Scanner(System.in);
+//        Scanner scanner = new Scanner(System.in);
 
         System.out.print("Ingresar el DNI del alumno: ");
         Integer dni = scanner.nextInt();
@@ -222,6 +224,7 @@ public class Sistema {
     public void obtenerTodosAlumnos() {
         System.out.println("\n--- Lista de todos los alumnos (DNIs) ---");
 
+        // Pregunta para el profe: Es correcta esta forma sin utilizar HashSet?
         int[] dnisUnicos = new int[1000];
         int cantidadDnis = 0;
 
@@ -260,6 +263,7 @@ public class Sistema {
     public void obtenerAlumnosConPromedio() {
         System.out.println("\n--- Alumnos con sus promedios ---");
 
+        // Pregunta para el profe: Es correcta esta forma sin utilizar TDAs de java?
         int[] dnis = new int[1000];
         int[] sumas = new int[1000];
         int[] contadores = new int[1000];

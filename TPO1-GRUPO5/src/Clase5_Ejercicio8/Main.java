@@ -16,47 +16,36 @@ public class Main {
                 case 1:
                     sistema.crearMateria();
                     break;
-
                 case 2:
                     sistema.agregarUltimaMateriaAlDiccionario();
                     break;
-
                 case 3:
                     sistema.agregarNotaMateria();
                     break;
-
                 case 4:
                     sistema.eliminarNotaMateria();
                     break;
-
                 case 5:
                     sistema.eliminarAlumno();
                     break;
-
                 case 6:
                     sistema.obtenerNotasAlumno();
                     break;
-
                 case 7:
                     sistema.obtenerTodosAlumnos();
                     break;
-
                 case 8:
                     sistema.obtenerAlumnosConPromedio();
                     break;
-
                 case 9:
                     sistema.imprimirUltimaMateria();
                     break;
-
                 case 10:
                     sistema.mostrarDiccionarioGeneral();
                     break;
-
                 case 0:
                     System.out.println("Terminando el programa.");
                     break;
-
                 default:
                     System.out.println("Opción inválida. Por favor, intentar nuevamente.");
             }
@@ -67,7 +56,6 @@ public class Main {
             }
 
         } while (opcion != 0);
-
         scanner.close();
     }
 
